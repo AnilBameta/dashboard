@@ -1,0 +1,29 @@
+.sidebarTitle{
+    font-size: 15px;
+    color: rgb(168, 166, 166);
+    margin-left: 15px;
+}
+.sidebarList{
+    list-style: none;
+    padding: 5px;
+    margin-left: 20px;
+}
+.sidebarListItem {
+    font-size: 18px;
+    font-weight: 500;
+    color:rgb(80, 78, 78);
+    padding: 5px;
+    cursor:pointer;
+    display:flex;
+    align-items: center;
+    border-radius: 10px;
+}
+
+.sidebarListItem.active, .sidebarListItem:hover {
+    background-color: rgb(231, 231, 253);
+}
+
+.sidebarIcon{
+    margin-right:5px;
+    font-size: 20px !important;
+}
