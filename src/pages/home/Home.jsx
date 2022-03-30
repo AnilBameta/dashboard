@@ -1,15 +1,26 @@
-import React from 'react'
+import React,{useState,useEffect} from 'react'
+import axios from 'axios'
 import Chart from '../../components/chart/Chart'
 import FeaturedInfo from '../../components/featuredInfo/FeaturedInfo'
 import './home.css'
-import {userData} from "../../dummyData"
+// import {userData} from "../../dummyData"
 import WidgetLg from '../../components/widgetLg/WidgetLg'
 import WidgetSm from '../../components/widgetSm/WidgetSm'
 const Home = () => {
+  const [userData,setUserData] = useState() ;
+  useEffect(()=>{
+   axios.get("http://localhost:8080/users")
+   .then(result => {
+     setUserData(result)
+      console.log(userData)    
+    })
+   .catch(err => console.log(err))
+  },[])
+  console.log(userData) 
   return (
     <div className='home'>
       <FeaturedInfo />
-      <Chart data={userData} title="User Analytics" grid dataKey="Active User"/>
+      <Chart data={userData?.data?.data} title="User Analytics" grid dataKey="Active User"/>
       <div className="homeWidgets">
           <WidgetSm />
           <WidgetLg />

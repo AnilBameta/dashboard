@@ -1,12 +1,13 @@
 import React from 'react'
 import {PermIdentity,LocationSearching,CalendarToday,PhoneAndroid,MailOutline, Publish } from '@material-ui/icons'
 import './user.css'
+import { Link } from 'react-router-dom'
 const User = () => {
   return (
     <div className='user'>
       <div className="userTitleContainer">
           <h1 className="userTitle">Edit User</h1>
-          <buttom className="userAddButton">Create</buttom>
+          <Link to={'/newUser'} style={{textDecoration: 'none' }}><buttom className="userAddButton">Create</buttom></Link>    
       </div>
       <div className="userContainer">
           <div className="userShow">
