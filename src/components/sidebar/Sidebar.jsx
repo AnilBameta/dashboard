@@ -13,17 +13,17 @@ const SIdebar = () => {
             fontList={[LineStyle, Timeline, TrendingUp]}
           />
           <MenuList
-            heading="Dashboard"
+            heading="Quick Menu"
             list={["Users", "Products", "Transanctions","Reports"]}
             fontList={[ LineStyle, Timeline, TrendingUp, LineStyle]}
           />
           <MenuList
-            heading="Dashboard"
+            heading="Notifications"
             list={["Mail", "Feedback", "Messages"]}
             fontList={[LineStyle, Timeline, TrendingUp]}
           />
           <MenuList
-            heading="Dashboard"
+            heading="Staff"
             list={["Manage", "Analytics", "Reports"]}
             fontList={[LineStyle, Timeline, TrendingUp]}
           />
