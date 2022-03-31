@@ -6,12 +6,13 @@ import './home.css'
 // import {userData} from "../../dummyData"
 import WidgetLg from '../../components/widgetLg/WidgetLg'
 import WidgetSm from '../../components/widgetSm/WidgetSm'
-const Home = () => {
+const Home = (props) => {
   const [userData,setUserData] = useState() ;
   useEffect(()=>{
    axios.get("http://localhost:8080/users")
    .then(result => {
      setUserData(result)
+     props.homeReduxData(result)
       console.log(userData)    
     })
    .catch(err => console.log(err))
