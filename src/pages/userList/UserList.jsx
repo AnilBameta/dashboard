@@ -1,15 +1,31 @@
 import "./userList.css";
+import axios from 'axios'
 import { DataGrid } from "@material-ui/data-grid";
 import { DeleteOutline } from "@material-ui/icons";
-import { userRows } from "../../dummyData";
+// import { userRows } from "../../dummyData";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 
-const UserList = () => {
-  const [data, setData] = useState(userRows);
+const UserList = (props) => {
+  const [data, setData] = useState([]);
+  useEffect(()=>{
+    axios.get("http://localhost:8080/userRows")
+    .then(result => {
+      setData(result?.data?.UserRows) 
+      props.UserListReduxData(result?.data?.UserRows)  
+     })
+    .catch(err => console.log(err))
+   },[])
 
+   console.log("userRows",data)
+
+   
+   
+   
+   console.log("data",data)
   const handleDelete = (id) => {
     setData(data.filter((item) => item.id !== id));
+    props.DeleteUserList(id)
   };
 
   const columns = [
