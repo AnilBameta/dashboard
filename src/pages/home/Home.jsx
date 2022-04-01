@@ -11,17 +11,15 @@ const Home = (props) => {
   useEffect(()=>{
    axios.get("http://localhost:8080/users")
    .then(result => {
-     setUserData(result)
      props.homeReduxData(result)
-      console.log(userData)    
+         
     })
    .catch(err => console.log(err))
   },[])
-  console.log(userData) 
   return (
     <div className='home'>
       <FeaturedInfo />
-      <Chart data={userData?.data?.data} title="User Analytics" grid dataKey="Active User"/>
+      <Chart data={props?.data?.homeItems?.homeData?.data?.data} title="User Analytics" grid dataKey="Active User"/>
       <div className="homeWidgets">
           <WidgetSm />
           <WidgetLg />
