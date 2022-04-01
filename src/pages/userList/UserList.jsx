@@ -1,31 +1,23 @@
 import "./userList.css";
-import axios from 'axios'
+import axios from "axios";
 import { DataGrid } from "@material-ui/data-grid";
 import { DeleteOutline } from "@material-ui/icons";
 // import { userRows } from "../../dummyData";
 import { Link } from "react-router-dom";
-import { useState,useEffect } from "react";
+import { useEffect } from "react";
 
 const UserList = (props) => {
-  const [data, setData] = useState([]);
-  useEffect(()=>{
-    axios.get("http://localhost:8080/userRows")
-    .then(result => {
-      setData(result?.data?.UserRows) 
-      props.UserListReduxData(result?.data?.UserRows)  
-     })
-    .catch(err => console.log(err))
-   },[])
-
-   console.log("userRows",data)
-
-   
-   
-   
-   console.log("data",data)
+  useEffect(() => {
+    axios
+      .get("http://localhost:8080/userRows")
+      .then((result) => {
+        console.log(result);
+        props.UserListReduxData(result.data.UserRows);
+      })
+      .catch((err) => console.log(err));
+  }, []);
   const handleDelete = (id) => {
-    setData(data.filter((item) => item.id !== id));
-    props.DeleteUserList(id)
+    props.UserListDeleteData(id);
   };
 
   const columns = [
@@ -77,7 +69,7 @@ const UserList = (props) => {
   return (
     <div className="userList">
       <DataGrid
-        rows={data}
+        rows={props?.data?.userList?.userData}
         disableSelectionOnClick
         columns={columns}
         pageSize={8}
